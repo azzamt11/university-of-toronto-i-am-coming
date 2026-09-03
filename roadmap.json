@@ -271,6 +271,98 @@
                           "url": "https://arxiv.org/abs/2403.14608"
                         }
                       ]
+                    },
+                    {
+                      "id": "1E1N16",
+                      "title": "Matrix Computations - Gene H. Golub dan Charles F. Van Loan",
+                      "description": "Jembatani SVD statis menuju numerical stability, low-rank approximation, Eckart-Young theorem, preconditioning, dan perturbasi singular values. Target: Chapters 2, 5, dan 8; verifikasi nomor bab sesuai edisi yang digunakan.",
+                      "resources": [
+                        {
+                          "label": "SIAM reference",
+                          "url": "https://epubs.siam.org/doi/abs/10.1137/1028073?journalCode=siread"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N17",
+                      "title": "The Principles of Deep Learning Theory - Roberts, Yaida, dan Hanin",
+                      "description": "Pelajari signal propagation, gradient variance, dan subspace dynamics untuk memahami mengapa low-rank adaptation dapat bekerja pada jaringan berdimensi tinggi. Target: Chapters 1-5.",
+                      "resources": [
+                        {
+                          "label": "Official book site",
+                          "url": "https://deeplearningtheory.com/"
+                        },
+                        {
+                          "label": "Book preprint",
+                          "url": "https://arxiv.org/abs/2106.10165"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N18",
+                      "title": "Optimization for Machine Learning - Sra, Nowozin, dan Wright (eds.)",
+                      "description": "Perkuat stochastic optimization, preconditioned gradient methods, first-order non-convex algorithms, dan second-order methods yang relevan untuk adaptive fine-tuning.",
+                      "resources": [
+                        {
+                          "label": "MIT Press page",
+                          "url": "https://mitpress.mit.edu/9780262537766/optimization-for-machine-learning/"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N19",
+                      "title": "Build a Large Language Model (From Scratch) - Sebastian Raschka",
+                      "description": "Bangun pemahaman tensor shapes, Q/K/V projections, attention, GPT-style blocks, dan fine-tuning dengan Python serta PyTorch. Target: Chapters 3 dan 5; verifikasi nomor bab sesuai edisi.",
+                      "resources": [
+                        {
+                          "label": "Author book hub",
+                          "url": "https://www.sebastianraschka.com/llms-from-scratch/"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N20",
+                      "title": "DoRA: Weight-Decomposed Low-Rank Adaptation - Liu et al. (2024)",
+                      "description": "Pelajari pemisahan magnitude dan direction pada weight update, lalu bandingkan kapasitas representasi dan stabilitas DoRA dengan LoRA sebagai baseline alternatif.",
+                      "resources": [
+                        {
+                          "label": "Paper",
+                          "url": "https://arxiv.org/abs/2402.09353"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N21",
+                      "title": "GaLore: Memory-Efficient LLM Training by Gradient Low-Rank Projection - Zhao et al. (2024)",
+                      "description": "Pahami perbedaan weight-space LoRA dan gradient-space projection, perubahan subruang gradient selama training, serta implikasinya untuk adaptive spectral methods.",
+                      "resources": [
+                        {
+                          "label": "Paper",
+                          "url": "https://arxiv.org/abs/2403.03507"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N22",
+                      "title": "FLORA: Low-Rank Adapters Are Secretly Gradient Compressors - Hao et al. (2024)",
+                      "description": "Analisis perspektif LoRA sebagai random projection/gradient compressor dan pahami bagaimana resampling dapat menghasilkan update efektif yang lebih high-rank.",
+                      "resources": [
+                        {
+                          "label": "Paper",
+                          "url": "https://arxiv.org/abs/2402.03293"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N23",
+                      "title": "Shampoo: Preconditioned Stochastic Tensor Optimization - Gupta, Koren, dan Singer (2018)",
+                      "description": "Pelajari preconditioner berbasis struktur untuk tensor, operasi sepanjang row/column dimensions, matrix trace inequalities, dan trade-off antara biaya komputasi serta convergence.",
+                      "resources": [
+                        {
+                          "label": "Paper",
+                          "url": "https://arxiv.org/abs/1802.09568"
+                        }
+                      ]
                     }
                   ]
                 }
