@@ -194,6 +194,83 @@
                           "url": "https://huggingface.co/docs/transformers/tasks/language_modeling"
                         }
                       ]
+                    },
+                    {
+                      "id": "1E1N9",
+                      "title": "The Matrix Cookbook - Petersen dan Pedersen",
+                      "description": "Jadikan referensi saat menurunkan turunan matriks, trace identities, norm, eigenvalue, dan hubungan gradient dengan spectral decomposition.",
+                      "resources": [
+                        {
+                          "label": "Reference PDF",
+                          "url": "https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N10",
+                      "title": "Numerical Optimization - Nocedal dan Wright",
+                      "description": "Prioritaskan Chapter 2 (unconstrained optimization), Chapter 3 (line search), Chapter 6 (trust region), dan bagian conjugate-gradient/preconditioning.",
+                      "resources": [
+                        {
+                          "label": "Official book page",
+                          "url": "https://users.iems.northwestern.edu/~nocedal/book/num-opt"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N11",
+                      "title": "Adam: A Method for Stochastic Optimization - Kingma dan Ba (2014)",
+                      "description": "Pahami momentum, second-moment estimate, bias correction, dan mengapa adaptive per-parameter scaling berhubungan dengan preconditioning diagonal.",
+                      "resources": [
+                        {
+                          "label": "Paper",
+                          "url": "https://arxiv.org/abs/1412.6980"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N12",
+                      "title": "DyLoRA: Parameter Efficient Tuning of Pre-trained Models using Dynamic Search-Free Low-Rank Adaptation - Valipour et al. (2023)",
+                      "description": "Bandingkan dynamic rank training DyLoRA dengan static LoRA dan AdaLoRA; catat asumsi, rank range, training procedure, benchmark, dan keterbatasannya.",
+                      "resources": [
+                        {
+                          "label": "Paper",
+                          "url": "https://arxiv.org/abs/2210.07558"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N13",
+                      "title": "Preconditioned Gradient Descent for Deep Learning - validasi referensi",
+                      "description": "Temukan paper yang tepat dari judul, penulis, dan tahun sebelum mengutipnya. Pastikan definisi preconditioner, setting eksperimen, dan klaimnya benar-benar relevan dengan adaptive spectral allocation.",
+                      "resources": [
+                        {
+                          "label": "Search arXiv",
+                          "url": "https://arxiv.org/search/?query=preconditioned+gradient+descent+deep+learning&searchtype=all"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N14",
+                      "title": "Recent spectral decomposition and PEFT literature scan",
+                      "description": "Cari paper terbaru yang menggabungkan spectral decomposition, adaptive rank, SVD, atau PEFT. Buat tabel paper, tahun, model, dataset, baseline, metrik, dan research gap. Jangan memakai label FSDP tanpa memverifikasi judul dan maknanya.",
+                      "resources": [
+                        {
+                          "label": "Search arXiv",
+                          "url": "https://arxiv.org/search/?query=spectral+decomposition+PEFT&searchtype=all"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N15",
+                      "title": "Parameter-Efficient Fine-Tuning for Large Models: A Comprehensive Survey",
+                      "description": "Gunakan survey ini untuk memetakan LoRA, adapter, prompt tuning, quantization-aware methods, adaptive methods, dan posisi kontribusi risetmu sebelum menulis novelty claim.",
+                      "resources": [
+                        {
+                          "label": "Survey paper",
+                          "url": "https://arxiv.org/abs/2403.14608"
+                        }
+                      ]
                     }
                   ]
                 }
