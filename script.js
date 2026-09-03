@@ -71,12 +71,14 @@ function renderTask(task) {
   const complete = status.complete === status.total && status.total > 0;
   const partial = status.complete > 0 && !complete;
   const description = task.description ? `<p class="task-description">${escapeHtml(task.description)}</p>` : "";
+  const resources = (task.resources || []).filter((resource) => /^https?:\/\//i.test(resource.url || ""));
+  const resourceLinks = resources.length ? `<div class="task-resources">${resources.map((resource) => `<a href="${escapeHtml(resource.url)}" target="_blank" rel="noreferrer">${escapeHtml(resource.label || "Open resource")} -&gt;</a>`).join("")}</div>` : "";
   const children = hasChildren ? `<div class="children">${task.children.map(renderTask).join("")}</div>` : "";
 
   return `<div class="task ${hasChildren ? "has-children" : ""} ${complete ? "is-complete" : ""}">
     <input class="task-control" type="checkbox" data-task-id="${escapeHtml(task.id)}" ${complete ? "checked" : ""} ${hasChildren ? "disabled" : ""} ${partial ? "data-partial=\"true\"" : ""} aria-label="${escapeHtml(task.id)} ${escapeHtml(task.title)}">
     <div class="task-main"><span class="task-id">${escapeHtml(task.id)}</span><span class="task-title">${escapeHtml(task.title || "Untitled task")}</span></div>
-    ${description}${children}
+    ${description}${resourceLinks}${children}
   </div>`;
 }
 

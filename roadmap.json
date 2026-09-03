@@ -32,19 +32,170 @@
         {
           "id": "1E",
           "title": "Kolaborasi Publikasi",
-          "description": "Menjalankan proyek riset bersama dosen eksternal (UI/ITB/UGM) untuk diterbitkan di International Conference bereputasi (seperti IEEE IoTaIS atau IEEE TENCON di Bali).",
+          "description": "Menjalankan proyek riset bersama dosen eksternal (UI/ITB/UGM) untuk diterbitkan di International Conference bereputasi (seperti IEEE IoTaIS atau IEEE TENCON di Bali) dan publish paper dengan judul: Dynamic Rank Preconditioning: Adaptive Spectral Allocation for Low-Rank Fine-Tuning",
           "children": [
             {
               "id": "1E1",
-              "title": "Mempelajari AI pada bidang LLM - LoRA Adaptation",
+              "title": "Mempelajari semua prerequisite yang dibutuhkan",
               "children": [
-                {
-                  "id": "1E1A",
-                  "title": "Linear Algebra and Learning from Data by Gilbert Strang"
+              {
+                "id": "1E1A",
+                  "title": "Linear Algebra and Learning from Data by Gilbert Strang",
+                  "description": "Pelajari vektor, matriks, eigenvalue/eigenvector, SVD, norm, proyeksi, dan intuisi dekomposisi low-rank."
                 },
                 {
                   "id": "1E1B",
-                  "title": "Mathematics for Machine Learning by Marc Peter Deisenroth, A. Aldo Faisal, and Cheng Soon Ong"
+                  "title": "Mathematics for Machine Learning by Marc Peter Deisenroth, A. Aldo Faisal, and Cheng Soon Ong",
+                  "description": "Kuasai kalkulus multivariabel, probabilitas, optimisasi, dan gradient-based learning yang diperlukan untuk memahami training."
+                },
+                {
+                  "id": "1E1C",
+                  "title": "Python, Git, Linux, dan environment reproducible",
+                  "description": "Mampu membuat virtual environment, mengelola dependency, memakai Git branch/commit, menjalankan eksperimen dari command line, dan menyimpan konfigurasi."
+                },
+                {
+                  "id": "1E1D",
+                  "title": "PyTorch fundamentals",
+                  "description": "Pahami tensor/device/dtype, autograd, Dataset/DataLoader, model modules, optimizer, loss, checkpoint, mixed precision, dan penggunaan GPU."
+                },
+                {
+                  "id": "1E1E",
+                  "title": "Transformer dan causal language modeling",
+                  "description": "Pahami tokenization, embeddings, attention, residual connection, normalization, causal mask, logits, cross-entropy, dan perplexity."
+                },
+                {
+                  "id": "1E1F",
+                  "title": "LoRA secara matematis dan implementatif",
+                  "description": "Pahami adapter A/B, rank r, scaling alpha, target modules, frozen base model, trainable parameter count, merge/unmerge, dan keterbatasan low-rank adaptation."
+                },
+                {
+                  "id": "1E1G",
+                  "title": "Hugging Face Transformers, Datasets, dan PEFT",
+                  "description": "Mampu memuat tokenizer/model, menyiapkan dataset, membuat LoraConfig, membungkus model dengan PEFT, melatih adapter, menyimpan adapter, dan menjalankan inference."
+                },
+                {
+                  "id": "1E1H",
+                  "title": "Siapkan hardware dan memory budget",
+                  "description": "Tentukan model kecil untuk smoke test dan GPU/cloud yang tersedia. Catat VRAM, storage, runtime, batch size, sequence length, gradient accumulation, dan biaya per eksperimen."
+                },
+                {
+                  "id": "1E1I",
+                  "title": "Dataset yang legal, bersih, dan versioned",
+                  "description": "Tentukan task/domain, sumber dan lisensi data, format instruction atau text, preprocessing, deduplication, train/validation/test split, serta cegah data leakage."
+                },
+                {
+                  "id": "1E1J",
+                  "title": "Definisikan baseline dan evaluasi",
+                  "description": "Tetapkan baseline frozen model, full fine-tuning bila feasible, dan LoRA. Pilih metrik task yang tepat, fixed evaluation set, seed, confidence interval atau repeated runs, dan evaluasi kualitas/error."
+                },
+                {
+                  "id": "1E1K",
+                  "title": "Rancang eksperimen ablation untuk Dynamic Rank Preconditioning",
+                  "description": "Tentukan hipotesis, rank schedule, kapan rank berubah, kriteria alokasi rank, comparator LoRA rank tetap, hyperparameter, stopping rule, dan metrik kualitas versus parameter, VRAM, waktu, serta energi."
+                },
+                {
+                  "id": "1E1L",
+                  "title": "Reproducibility dan research log",
+                  "description": "Catat commit code, versi library, model revision, dataset hash, konfigurasi, seed, hardware, log loss, checkpoint, hasil evaluasi, dan kegagalan eksperimen."
+                },
+                {
+                  "id": "1E1M",
+                  "title": "Etika, keamanan, dan batasan model",
+                  "description": "Dokumentasikan privacy/copyright dataset, lisensi base model, bias, hallucination, misuse risk, model card, data card, dan batasan klaim penelitian."
+                },
+                {
+                  "id": "1E1N",
+                  "title": "Bacaan inti LoRA, Transformer, dan adaptive rank",
+                  "children": [
+                    {
+                      "id": "1E1N1",
+                      "title": "Deep Learning - Ian Goodfellow, Yoshua Bengio, dan Aaron Courville",
+                      "description": "Prioritaskan bab 2 (aljabar linear), 4 (numerik), 5 (machine learning), 6 (deep feedforward), 8 (optimisasi), dan 10 (sequence modeling).",
+                      "resources": [
+                        {
+                          "label": "Buku online gratis",
+                          "url": "https://www.deeplearningbook.org/"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N2",
+                      "title": "Attention Is All You Need - Vaswani et al. (2017)",
+                      "description": "Pahami self-attention, multi-head attention, feed-forward blocks, residual connections, normalization, dan positional encoding.",
+                      "resources": [
+                        {
+                          "label": "Paper",
+                          "url": "https://arxiv.org/abs/1706.03762"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N3",
+                      "title": "LoRA: Low-Rank Adaptation of Large Language Models - Hu et al. (2021)",
+                      "description": "Baca metode, alasan memakai low-rank update, target modules, jumlah parameter trainable, dan eksperimen rank-deficiency.",
+                      "resources": [
+                        {
+                          "label": "Paper",
+                          "url": "https://arxiv.org/abs/2106.09685"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N4",
+                      "title": "QLoRA: Efficient Finetuning of Quantized LLMs - Dettmers et al. (2023)",
+                      "description": "Pelajari NF4, double quantization, paged optimizers, dan trade-off kualitas, memori, serta waktu training.",
+                      "resources": [
+                        {
+                          "label": "Paper",
+                          "url": "https://arxiv.org/abs/2305.14314"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N5",
+                      "title": "AdaLoRA: Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning - Zhang et al. (2023)",
+                      "description": "Baca sebagai literatur terdekat dengan ide dynamic rank: bagaimana budget parameter dialokasikan dan rank penting dipertahankan.",
+                      "resources": [
+                        {
+                          "label": "Paper",
+                          "url": "https://arxiv.org/abs/2303.10512"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N6",
+                      "title": "Intrinsic Dimensionality Explains the Effectiveness of Language Model Fine-Tuning - Aghajanyan et al. (2021)",
+                      "description": "Pahami mengapa fine-tuning dapat efektif pada subruang berdimensi rendah dan kaitannya dengan hipotesis low-rank.",
+                      "resources": [
+                        {
+                          "label": "Paper",
+                          "url": "https://arxiv.org/abs/2012.13255"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N7",
+                      "title": "Hugging Face PEFT LoRA developer guide",
+                      "description": "Gunakan sebagai referensi implementasi untuk LoraConfig, initialization, target modules, adapter merging, dan advanced LoRA variants.",
+                      "resources": [
+                        {
+                          "label": "Dokumentasi",
+                          "url": "https://huggingface.co/docs/peft/main/developer_guides/lora"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1E1N8",
+                      "title": "Hugging Face causal language modeling guide",
+                      "description": "Ikuti alur tokenizer, dataset, causal LM data collator, training, evaluasi, dan penyimpanan model sebelum memakai PEFT.",
+                      "resources": [
+                        {
+                          "label": "Dokumentasi",
+                          "url": "https://huggingface.co/docs/transformers/tasks/language_modeling"
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             }

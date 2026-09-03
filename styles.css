@@ -69,6 +69,9 @@ h1 { max-width: 720px; margin: 0; font-size: clamp(2.8rem, 7vw, 5.8rem); line-he
 .task-id { min-width: 30px; color: var(--orange); font-size: 11px; font-weight: 500; }
 .task-title { font-size: 14px; font-weight: 700; line-height: 1.45; }
 .task-description { margin: 7px 0 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+.task-resources { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 9px; }
+.task-resources a { color: var(--green); font: 10px "DM Mono", monospace; text-decoration: none; border-bottom: 1px solid #a9d2c2; }
+.task-resources a:hover { color: var(--orange); border-color: var(--orange); }
 .children { margin: 7px 0 0 14px; padding-left: 19px; border-left: 1px solid #d4e1d7; }
 .children .task { padding-left: 29px; }
 .children .task-control { top: 16px; }
