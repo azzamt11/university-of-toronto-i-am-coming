@@ -1,6 +1,11 @@
-FROM nginx:1.27-alpine
+FROM node:22-alpine
 
-COPY index.html styles.css script.js roadmap.json /usr/share/nginx/html/
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+WORKDIR /app
 
-EXPOSE 80
+COPY package.json ./
+RUN npm install --omit=dev
+
+COPY index.html styles.css script.js roadmap.json server.js ./
+
+EXPOSE 3000
+CMD ["node", "server.js"]

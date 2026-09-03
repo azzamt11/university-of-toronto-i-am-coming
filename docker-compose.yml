@@ -4,6 +4,37 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: uoft-roadmap
+    environment:
+      PORT: 3000
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: roadmap
+      MYSQL_USER: roadmap
+      MYSQL_PASSWORD: roadmap_password
     ports:
-      - "3000:80"
+      - "3000:3000"
+    depends_on:
+      mysql:
+        condition: service_healthy
     restart: unless-stopped
+
+  mysql:
+    image: mysql:8.4
+    container_name: uoft-roadmap-mysql
+    environment:
+      MYSQL_DATABASE: roadmap
+      MYSQL_USER: roadmap
+      MYSQL_PASSWORD: roadmap_password
+      MYSQL_ROOT_PASSWORD: change_this_root_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+volumes:
+  mysql_data:

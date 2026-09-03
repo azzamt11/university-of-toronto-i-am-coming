@@ -1,7 +1,7 @@
-const STORAGE_KEY = "uoft-roadmap-checklist-v1";
+const STORAGE_KEY = "checked_tasks";
 
 let roadmapData = null;
-let checkedLeaves = loadCheckedLeaves();
+let checkedTasks = loadCheckedTasks();
 
 const roadmapElement = document.querySelector("#roadmap");
 const errorElement = document.querySelector("#error-state");
@@ -19,16 +19,67 @@ async function loadRoadmap() {
   updatedElement.textContent = "Loading roadmap.json...";
 
   try {
-    const response = await fetch("roadmap.json", { cache: "no-store" });
+    const response = await fetch("/roadmap.json", { cache: "no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     roadmapData = await response.json();
+    await addTaskHashes(roadmapData.stages.flatMap((stage) => stage.tasks || []));
+
+    const currentHashes = new Set(getLeafTasks(roadmapData).map((task) => task.hash));
+    checkedTasks = new Set([...checkedTasks].filter((hash) => currentHashes.has(hash)));
+    const serverTasks = await loadServerTasks();
+    checkedTasks = new Set([...checkedTasks, ...serverTasks].filter((hash) => currentHashes.has(hash)));
+    saveCheckedTasks();
+    await syncCheckedTasks();
+
     renderRoadmap();
-    updatedElement.textContent = `Loaded ${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+    updatedElement.textContent = `Loaded and backed up at ${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
   } catch (error) {
     console.error(error);
     roadmapElement.innerHTML = "";
     errorElement.hidden = false;
     updatedElement.textContent = "Could not load roadmap.json";
+  }
+}
+
+async function addTaskHashes(tasks) {
+  for (const task of tasks) {
+    task.hash = await hashTask(task);
+    if (task.children?.length) await addTaskHashes(task.children);
+  }
+}
+
+async function hashTask(task) {
+  const fingerprint = JSON.stringify({
+    title: task.title || "",
+    description: task.description || "",
+    resources: task.resources || []
+  });
+  const bytes = new TextEncoder().encode(fingerprint);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+async function loadServerTasks() {
+  try {
+    const response = await fetch("/api/checked-tasks", { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    return Array.isArray(data.checked_tasks) ? data.checked_tasks.filter(isSha256) : [];
+  } catch (error) {
+    console.warn("MySQL backup unavailable; continuing with localStorage.", error);
+    return [];
+  }
+}
+
+async function syncCheckedTasks() {
+  try {
+    await fetch("/api/checked-tasks", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ checked_tasks: [...checkedTasks] })
+    });
+  } catch (error) {
+    console.warn("Could not sync checked_tasks to MySQL.", error);
   }
 }
 
@@ -67,7 +118,8 @@ function renderStage(stage) {
 
 function renderTask(task) {
   const hasChildren = Array.isArray(task.children) && task.children.length > 0;
-  const status = hasChildren ? getGroupStatus(task.children) : { complete: isChecked(task.id) ? 1 : 0, total: 1, percent: isChecked(task.id) ? 100 : 0 };
+  const checked = isChecked(task.hash);
+  const status = hasChildren ? getGroupStatus(task.children) : { complete: checked ? 1 : 0, total: 1, percent: checked ? 100 : 0 };
   const complete = status.complete === status.total && status.total > 0;
   const partial = status.complete > 0 && !complete;
   const description = task.description ? `<p class="task-description">${escapeHtml(task.description)}</p>` : "";
@@ -76,24 +128,25 @@ function renderTask(task) {
   const children = hasChildren ? `<div class="children">${task.children.map(renderTask).join("")}</div>` : "";
 
   return `<div class="task ${hasChildren ? "has-children" : ""} ${complete ? "is-complete" : ""}">
-    <input class="task-control" type="checkbox" data-task-id="${escapeHtml(task.id)}" ${complete ? "checked" : ""} ${hasChildren ? "disabled" : ""} ${partial ? "data-partial=\"true\"" : ""} aria-label="${escapeHtml(task.id)} ${escapeHtml(task.title)}">
+    <input class="task-control" type="checkbox" data-task-hash="${task.hash}" ${complete ? "checked" : ""} ${hasChildren ? "disabled" : ""} ${partial ? "data-partial=\"true\"" : ""} aria-label="${escapeHtml(task.id)} ${escapeHtml(task.title)}">
     <div class="task-main"><span class="task-id">${escapeHtml(task.id)}</span><span class="task-title">${escapeHtml(task.title || "Untitled task")}</span></div>
     ${description}${resourceLinks}${children}
   </div>`;
 }
 
-roadmapElement.addEventListener("change", (event) => {
-  const checkbox = event.target.closest("input[data-task-id]");
+roadmapElement.addEventListener("change", async (event) => {
+  const checkbox = event.target.closest("input[data-task-hash]");
   if (!checkbox || checkbox.disabled) return;
-  if (checkbox.checked) checkedLeaves.add(checkbox.dataset.taskId);
-  else checkedLeaves.delete(checkbox.dataset.taskId);
-  saveCheckedLeaves();
+  if (checkbox.checked) checkedTasks.add(checkbox.dataset.taskHash);
+  else checkedTasks.delete(checkbox.dataset.taskHash);
+  saveCheckedTasks();
   renderRoadmap();
+  await syncCheckedTasks();
 });
 
 function getGroupStatus(items) {
   const status = items.reduce((result, item) => {
-    const itemStatus = item.children?.length ? getGroupStatus(item.children) : { complete: isChecked(item.id) ? 1 : 0, total: 1 };
+    const itemStatus = item.children?.length ? getGroupStatus(item.children) : { complete: isChecked(item.hash) ? 1 : 0, total: 1 };
     result.complete += itemStatus.complete;
     result.total += itemStatus.total;
     return result;
@@ -109,22 +162,33 @@ function updateOverallProgress() {
   document.querySelector("#progress-ring").style.setProperty("--progress", `${status.percent}%`);
 }
 
-function isChecked(id) { return checkedLeaves.has(id); }
-
-function loadCheckedLeaves() {
-  try { return new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]")); }
-  catch { return new Set(); }
+function getLeafTasks(data) {
+  const leaves = [];
+  const visit = (tasks) => tasks.forEach((task) => task.children?.length ? visit(task.children) : leaves.push(task));
+  data.stages.forEach((stage) => visit(stage.tasks || []));
+  return leaves;
 }
 
-function saveCheckedLeaves() { localStorage.setItem(STORAGE_KEY, JSON.stringify([...checkedLeaves])); }
+function isChecked(hash) { return checkedTasks.has(hash); }
 
-function resetProgress() {
-  if (!checkedLeaves.size || confirm("Reset all checklist progress?")) {
-    checkedLeaves.clear();
-    saveCheckedLeaves();
-    if (roadmapData) renderRoadmap();
-  }
+function loadCheckedTasks() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    return new Set(Array.isArray(stored) ? stored.filter(isSha256) : []);
+  } catch { return new Set(); }
 }
+
+function saveCheckedTasks() { localStorage.setItem(STORAGE_KEY, JSON.stringify([...checkedTasks])); }
+
+async function resetProgress() {
+  if (checkedTasks.size && !confirm("Reset all checklist progress?")) return;
+  checkedTasks.clear();
+  saveCheckedTasks();
+  if (roadmapData) renderRoadmap();
+  await syncCheckedTasks();
+}
+
+function isSha256(value) { return typeof value === "string" && /^[a-f0-9]{64}$/i.test(value); }
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#039;" }[character]));
