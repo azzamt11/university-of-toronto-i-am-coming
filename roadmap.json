@@ -40,7 +40,11 @@
               "children": [
                 {
                   "id": "1E1A",
-                  "title": "Membeli buku Mathematics for Machine Learning"
+                  "title": "Mathematics for Machine Learning by Marc Peter Deisenroth, A. Aldo Faisal, and Cheng Soon Ong"
+                },
+                {
+                  "id": "1E1B",
+                  "title": "Linear Algebra and Learning from Data by Gilbert Strang"
                 }
               ]
             }
