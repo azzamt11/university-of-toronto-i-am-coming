@@ -49,14 +49,25 @@ async function addTaskHashes(tasks) {
 }
 
 async function hashTask(task) {
-  const fingerprint = JSON.stringify({
+  const fingerprint = {
     title: task.title || "",
     description: task.description || "",
     resources: task.resources || []
+  };
+
+  if (globalThis.crypto?.subtle) {
+    const bytes = new TextEncoder().encode(JSON.stringify(fingerprint));
+    const digest = await globalThis.crypto.subtle.digest("SHA-256", bytes);
+    return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+  }
+
+  const response = await fetch("/api/task-hash", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ task: fingerprint })
   });
-  const bytes = new TextEncoder().encode(fingerprint);
-  const digest = await crypto.subtle.digest("SHA-256", bytes);
-  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+  if (!response.ok) throw new Error(`Hash service returned HTTP ${response.status}`);
+  return (await response.json()).sha256;
 }
 
 async function loadServerTasks() {

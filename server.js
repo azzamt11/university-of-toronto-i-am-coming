@@ -1,6 +1,7 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+const nodeCrypto = require("crypto");
 const mysql = require("mysql2/promise");
 
 const port = Number(process.env.PORT || 3000);
@@ -26,6 +27,7 @@ const server = http.createServer(async (request, response) => {
   try {
     if (request.url === "/api/checked-tasks" && request.method === "GET") return await getCheckedTasks(response);
     if (request.url === "/api/checked-tasks" && request.method === "PUT") return await replaceCheckedTasks(request, response);
+    if (request.url === "/api/task-hash" && request.method === "POST") return await hashTask(request, response);
     if (request.method !== "GET") return sendJson(response, 405, { error: "Method not allowed" });
     return serveStatic(request.url, response);
   } catch (error) {
@@ -37,6 +39,18 @@ const server = http.createServer(async (request, response) => {
 async function getCheckedTasks(response) {
   const [rows] = await pool.query("SELECT sha256 FROM checked_tasks ORDER BY sha256");
   sendJson(response, 200, { checked_tasks: rows.map((row) => row.sha256) });
+}
+
+async function hashTask(request, response) {
+  const body = await readJson(request);
+  const task = body.task || {};
+  const fingerprint = JSON.stringify({
+    title: task.title || "",
+    description: task.description || "",
+    resources: task.resources || []
+  });
+  const sha256 = nodeCrypto.createHash("sha256").update(fingerprint, "utf8").digest("hex");
+  sendJson(response, 200, { sha256 });
 }
 
 async function replaceCheckedTasks(request, response) {
