@@ -1,0 +1,168 @@
+{
+  "title": "Abdullah Azzam's Roadmap to University of Toronto",
+  "university": "University of Toronto",
+  "funding": "Beasiswa LPDP",
+  "stages": [
+    {
+      "id": "stage-1",
+      "number": 1,
+      "title": "Portofolio & Prasyarat Akademik",
+      "target": "Sekarang - Pertengahan 2027",
+      "tasks": [
+        {
+          "id": "1A",
+          "title": "Evaluasi Kredensial (WES Canada)",
+          "description": "Mengirim transkrip S1 UIN Malang ke WES untuk dikonversi ke skala GPA Kanada. Target hasil konversi setara Grade A- / A (GPA 3.7 - 4.0)."
+        },
+        {
+          "id": "1B",
+          "title": "Sertifikasi Bahasa Inggris",
+          "description": "Meraih skor IELTS Academic minimal 7.0 (tidak ada band di bawah 6.5) atau TOEFL iBT minimal 93."
+        },
+        {
+          "id": "1C",
+          "title": "Tes Standar Kuantitatif",
+          "description": "Mengambil GRE General Test. Target skor Quantitative Reasoning minimal 166-170 untuk memvalidasi kemampuan matematika di atas rata-rata."
+        },
+        {
+          "id": "1D",
+          "title": "Portofolio Teknis (GitHub)",
+          "description": "Merapikan repositori riset LLM/PEFT. Kode harus bersih, menggunakan framework standar (PyTorch), memiliki visualisasi metrik, dan file README.md yang komprehensif."
+        },
+        {
+          "id": "1E",
+          "title": "Kolaborasi Publikasi",
+          "description": "Menjalankan proyek riset bersama dosen eksternal (UI/ITB/UGM) untuk diterbitkan di International Conference bereputasi (seperti IEEE IoTaIS atau IEEE TENCON di Bali).",
+          "children": [
+            {
+              "id": "1E1",
+              "title": "Mempelajari AI pada bidang LLM - LoRA Adaptation",
+              "children": [
+                {
+                  "id": "1E1A",
+                  "title": "Membeli buku Mathematics for Machine Learning"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stage-2",
+      "number": 2,
+      "title": "Pendekatan Profesor / Cold Emailing",
+      "target": "September - November 2027",
+      "tasks": [
+        {
+          "id": "2A",
+          "title": "Pemetaan Promotor",
+          "description": "Mengidentifikasi profesor di UofT/Vector Institute yang berfokus pada efisiensi LLM (contoh: Prof. Jimmy Ba atau Prof. Sheila McIlraith)."
+        },
+        {
+          "id": "2B",
+          "title": "Ekspedisi Cold Email",
+          "description": "Mengirim email personalisasi tingkat tinggi yang melampirkan CV riset, draf paper PEFT, dan tautan GitHub ke profesor target."
+        },
+        {
+          "id": "2C",
+          "title": "Wawancara Informal (Zoom Interview)",
+          "description": "Mempertahankan draf ide riset jika profesor tertarik, guna mengamankan komitmen tertulis bahwa beliau bersedia menjadi pembimbing (supervisor)."
+        }
+      ]
+    },
+    {
+      "id": "stage-3",
+      "number": 3,
+      "title": "Mengamankan LoA Resmi UofT",
+      "target": "Desember 2027 - Maret 2028",
+      "tasks": [
+        {
+          "id": "3A",
+          "title": "Pendaftaran Online",
+          "description": "Mengajukan aplikasi resmi melalui portal UofT School of Graduate Studies sebelum batas waktu (biasanya pertengahan Desember)."
+        },
+        {
+          "id": "3B",
+          "title": "Berkas Administrasi Kampus",
+          "children": [
+            {
+              "id": "3B1",
+              "title": "Statement of Purpose (SoP) & Research Statement spesifik bidang PEFT"
+            },
+            {
+              "id": "3B2",
+              "title": "Hasil evaluasi WES resmi"
+            },
+            {
+              "id": "3B3",
+              "title": "3 Surat Rekomendasi Akademis (1 dosen internal UIN Malang, 1 dosen kolaborator luar kampus top, 1 akademisi senior lainnya)"
+            }
+          ]
+        },
+        {
+          "id": "3C",
+          "title": "Penerimaan LoA",
+          "description": "Menerima \"Letter of Acceptance (LoA) Unconditional\" resmi dari departemen Computer Science UofT sekitar bulan Maret."
+        }
+      ]
+    },
+    {
+      "id": "stage-4",
+      "number": 4,
+      "title": "Mengamankan Beasiswa LPDP",
+      "target": "Jalur LoA / Tahun 2028",
+      "tasks": [
+        {
+          "id": "4A",
+          "title": "Pendaftaran Jalur Khusus (Jalur LoA)",
+          "description": "Menggunakan LoA Unconditional UofT untuk mendaftar LPDP."
+        },
+        {
+          "id": "4B",
+          "title": "Keuntungan Jalur LoA",
+          "description": "Otomatis bebas dari Tes Bakat Skolastik (TBS) LPDP dan langsung melompat ke tahap seleksi wawancara."
+        },
+        {
+          "id": "4C",
+          "title": "Seleksi Wawancara LPDP",
+          "description": "Mempersiapkan argumen taktis mengenai kontribusi riset LLM/PEFT yang hemat komputasi bagi kedaulatan teknologi dan efisiensi infrastruktur AI di Indonesia pasca-kelulusan."
+        },
+        {
+          "id": "4D",
+          "title": "Pengumuman SK",
+          "description": "Menerima SK Penerima Beasiswa dan dokumen Letter of Sponsorship (LoS)."
+        }
+      ]
+    },
+    {
+      "id": "stage-5",
+      "number": 5,
+      "title": "Logistik Keberangkatan & Visa",
+      "target": "Mei - Agustus 2028",
+      "tasks": [
+        {
+          "id": "5A",
+          "title": "Penerbitan LoG",
+          "description": "Mengurus Letter of Guarantee (LoG) sebagai jaminan finansial resmi dari pihak LPDP."
+        },
+        {
+          "id": "5B",
+          "title": "Aplikasi Study Permit (Visa Pelajar Kanada)",
+          "description": "Mengajukan visa pelajar menggunakan LoA UofT dan LoG LPDP sedini mungkin (proses memakan waktu 1-3 bulan)."
+        },
+        {
+          "id": "5C",
+          "title": "Medical Check-Up",
+          "description": "Melakukan tes kesehatan di rumah sakit panel resmi kedutaan Kanada."
+        },
+        {
+          "id": "5D",
+          "title": "Akomodasi di Toronto",
+          "description": "Mencari opsi tempat tinggal di Toronto, baik on-campus housing UofT maupun apartemen luar kampus."
+        }
+      ]
+    }
+  ],
+  "prompt": "Saya memiliki roadmap menuju S2 Computer Science di University of Toronto menggunakan LPDP. Saat ini saya berada di STAGE 1 (Portofolio) fokus pada riset LLM sub-bidang PEFT. Berdasarkan dokumen di atas, tolong buatkan rencana aksi mingguan (weekly action plan) yang taktis selama 3 bulan ke depan untuk membagi waktu antara belajar GRE Kuantitatif, persiapan IELTS, dan penyusunan draf paper awal."
+}

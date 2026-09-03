@@ -1,0 +1,9 @@
+services:
+  roadmap:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: uoft-roadmap
+    ports:
+      - "80:80"
+    restart: unless-stopped

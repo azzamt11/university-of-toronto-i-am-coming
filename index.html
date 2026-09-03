@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Nested roadmap checklist loaded from roadmap.json" />
+    <title>Roadmap Checklist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Personal roadmap</div>
+        <div class="hero-grid">
+          <div>
+            <p class="kicker" id="program-label">University of Toronto / LPDP</p>
+            <h1 id="roadmap-title">Loading roadmap<span class="title-mark">.</span></h1>
+            <p class="hero-copy">A focused path from preparation to departure. Complete the smallest steps first and the roadmap will keep score for you.</p>
+          </div>
+          <div class="overall-progress" aria-label="Overall progress">
+            <div class="progress-ring" id="progress-ring" style="--progress: 0%">
+              <div class="ring-content"><strong id="overall-percent">0%</strong><span>complete</span></div>
+            </div>
+            <div class="overall-stats"><span id="overall-count">0 / 0 tasks</span><small>saved in this browser</small></div>
+          </div>
+        </div>
+      </header>
+
+      <section class="toolbar" aria-label="Checklist controls">
+        <div class="toolbar-status"><span class="status-pulse"></span><span id="last-updated">Loading roadmap.json...</span></div>
+        <div class="toolbar-actions">
+          <button class="button button-quiet" id="reload-button" type="button">Reload JSON</button>
+          <button class="button button-quiet" id="reset-button" type="button">Reset progress</button>
+        </div>
+      </section>
+
+      <section id="roadmap" class="roadmap" aria-live="polite"></section>
+      <section id="error-state" class="error-state" hidden>
+        <h2>Could not load roadmap.json</h2>
+        <p>The roadmap data could not be loaded from the app root. Check that <code>roadmap.json</code> exists in the deployed container, then reload the page.</p>
+      </section>
+
+      <footer class="footer"><span>Source: <code>roadmap.json</code></span><span>Parent tasks complete automatically from their children.</span></footer>
+    </main>
+    <script src="script.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+### ======================================================================
+ROADMAP KOMPREHENSIF S2 COMPUTER SCIENCE (AI)
+UNIVERSITY OF TORONTO VIA BEASISWA LPDP
+
+### STAGE 1: PORTOFOLIO & PRASYARAT AKADEMIK (Target: Sekarang - Pertengahan 2027)
+
+1A. Evaluasi Kredensial (WES Canada): Mengirim transkrip S1 UIN Malang ke WES untuk dikonversi ke skala GPA Kanada. Target hasil konversi setara Grade A- / A (GPA 3.7 - 4.0).
+1B. Sertifikasi Bahasa Inggris: Meraih skor IELTS Academic minimal 7.0 (tidak ada band di bawah 6.5) atau TOEFL iBT minimal 93.
+1C. Tes Standar Kuantitatif: Mengambil GRE General Test. Target skor Quantitative Reasoning minimal 166-170 untuk memvalidasi kemampuan matematika di atas rata-rata.
+1D. Portofolio Teknis (GitHub): Merapikan repositori riset LLM/PEFT. Kode harus bersih, menggunakan framework standar (PyTorch), memiliki visualisasi metrik, dan file README.md yang komprehensif.
+1E. Kolaborasi Publikasi: Menjalankan proyek riset bersama dosen eksternal (UI/ITB/UGM) untuk diterbitkan di International Conference bereputasi (seperti IEEE IoTaIS atau IEEE TENCON di Bali).
+	1E1 Mempelajari AI pada bidang LLM - LoRA Adaptation
+		1E1A Membeli buku Mathematics for Machine Learning 
+
+### STAGE 2: PENDEKATAN PROFESOR / COLD EMAILING (Target: September - November 2027)
+
+2A. Pemetaan Promotor: Mengidentifikasi profesor di UofT/Vector Institute yang berfokus pada efisiensi LLM (contoh: Prof. Jimmy Ba atau Prof. Sheila McIlraith).
+2B. Ekspedisi Cold Email: Mengirim email personalisasi tingkat tinggi yang melampirkan CV riset, draf paper PEFT, dan tautan GitHub ke profesor target.
+2C. Wawancara Informal (Zoom Interview): Mempertahankan draf ide riset jika profesor tertarik, guna mengamankan komitmen tertulis bahwa beliau bersedia menjadi pembimbing (supervisor).
+
+### STAGE 3: MENGAMANKAN LoA RESMI UofT (Target: Desember 2027 - Maret 2028)
+
+3A. Pendaftaran Online: Mengajukan aplikasi resmi melalui portal UofT School of Graduate Studies sebelum batas waktu (biasanya pertengahan Desember).
+3B. Berkas Administrasi Kampus:
+
+  3B1. Statement of Purpose (SoP) & Research Statement spesifik bidang PEFT.
+  3B2. Hasil evaluasi WES resmi.
+  3B3. 3 Surat Rekomendasi Akademis (1 dosen internal UIN Malang, 1 dosen kolaborator luar kampus top, 1 akademisi senior lainnya).
+3C. Penerimaan LoA: Menerima "Letter of Acceptance (LoA) Unconditional" resmi dari departemen Computer Science UofT sekitar bulan Maret.
+
+### STAGE 4: MENGAMANKAN BEASISWA LPDP (Target: Jalur LoA / Tahun 2028)
+
+4A. Pendaftaran Jalur Khusus (Jalur LoA): Menggunakan LoA Unconditional UofT untuk mendaftar LPDP.
+4B. Keuntungan Jalur LoA: Otomatis bebas dari Tes Bakat Skolastik (TBS) LPDP dan langsung melompat ke tahap seleksi wawancara.
+4C. Seleksi Wawancara LPDP: Mempersiapkan argumen taktis mengenai kontribusi riset LLM/PEFT yang hemat komputasi bagi kedaulatan teknologi dan efisiensi infrastruktur AI di Indonesia pasca-kelulusan.
+4D. Pengumuman SK: Menerima SK Penerima Beasiswa dan dokumen Letter of Sponsorship (LoS).
+
+### STAGE 5: LOGISTIK KEBERANGKATAN & VISA (Target: Mei - Agustus 2028)
+
+5A. Penerbitan LoG: Mengurus Letter of Guarantee (LoG) sebagai jaminan finansial resmi dari pihak LPDP.
+5B. Aplikasi Study Permit (Visa Pelajar Kanada): Mengajukan visa pelajar menggunakan LoA UofT dan LoG LPDP sedini mungkin (proses memakan waktu 1-3 bulan).
+5C. Medical Check-Up: Melakukan tes kesehatan di rumah sakit panel resmi kedutaan Kanada.
+5D. Akomodasi di Toronto: Mencari opsi tempat tinggal di Toronto, baik on-campus housing UofT maupun apartemen luar kampus.
+
+### ======================================================================
+PROMPT UNTUK DIBAWA KE GEMINI:
+"Saya memiliki roadmap menuju S2 Computer Science di University of Toronto menggunakan LPDP. Saat ini saya berada di STAGE 1 (Portofolio) fokus pada riset LLM sub-bidang PEFT. Berdasarkan dokumen di atas, tolong buatkan rencana aksi mingguan (weekly action plan) yang taktis selama 3 bulan ke depan untuk membagi waktu antara belajar GRE Kuantitatif, persiapan IELTS, dan penyusunan draf paper awal."
